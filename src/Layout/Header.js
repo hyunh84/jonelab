@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {GState} from 'Router/GState';
 import History from 'Router/History';
 import GnbMenu from 'Layout/GnbMenu';
@@ -34,7 +34,7 @@ const Header = () => {
 			}
 		});
 
-		if(!isBack && locaState == null) {
+		if(!isBack) {
 			scrollToFn({
 				left : 0,
 			})

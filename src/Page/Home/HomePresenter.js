@@ -10,8 +10,7 @@ import HomBottom from "./HomBottom";
 const HomePresenter = ()=>{
 	const [compEl, setCompEl] = useState({});
 	const [workEl, setWorkEl] = useState({});
-	const {scrollToFn} = useContext(GState);
-	const {state : locaState} = useLocation();
+	const {scrollToFn, secID, setSecID} = useContext(GState);
 	const [observeEl, setObserveEl] = useState([]);
 	const options = {
 		rootMargin : '10px',
@@ -45,21 +44,22 @@ const HomePresenter = ()=>{
 			smooth : 'smooth',
 		})
 	}
-	
-	useEffect(()=>{
 
+	useEffect(()=>{
+		if(secID === '') return;
 		let goSectTimer;
-		if(locaState !== null && workEl.current !== undefined && compEl.current !== undefined) {
+		if(workEl.current !== undefined && compEl.current !== undefined) {
 			goSectTimer = setTimeout(function() {
-				goSectFn(locaState['sectId']);
+				goSectFn(secID);
 			}, 400);
 		}
+
 
 		return ()=>{
 			if(goSectTimer) clearTimeout(goSectTimer);
 		}
 
-	}, [locaState, compEl, workEl]);
+	}, [secID, compEl, workEl]);
 	
 	useEffect(()=>{
 		if(observeEl.length) {
