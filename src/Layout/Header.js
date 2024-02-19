@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import {useLocation, useNavigate } from 'react-router-dom';
 import {GState} from 'Router/GState';
 import History from 'Router/History';
 import GnbMenu from 'Layout/GnbMenu';
@@ -7,9 +7,9 @@ import GnbMenu from 'Layout/GnbMenu';
 const Header = () => {
 	const [gnbActive, setGnbActive] = useState(false);
 	const [isBack, setIsBack] = useState(false);
-	const {setMenu} = useContext(GState);
-	const {scrollToFn} = useContext(GState);
-	const { pathname, state : locaState } = useLocation();
+	const {setMenu, scrollToFn, setSecID, secID} = useContext(GState);
+	const navigate = useNavigate();
+	const {pathname} = useLocation();
 
 	//GNB OPEN BUTTON FUNCTION
 	const gnbOpenFnc = (e)=>{
@@ -18,6 +18,12 @@ const Header = () => {
 		}else{
 			setGnbActive(true);
 		}
+	}
+
+	// logo click function
+	const goHomeFnc = ()=>{
+		let path = window.location.protocol + '//' + window.location.host;
+		window.location.href = path;
 	}
 
 	
@@ -34,6 +40,7 @@ const Header = () => {
 			}
 		});
 
+		
 		if(!isBack) {
 			scrollToFn({
 				left : 0,
@@ -47,7 +54,7 @@ const Header = () => {
 		<>
 			<header id="header">
 				<div className="headerInner">
-					<Link to="/*" className="logo"><img src="/resources/images/common/logo.png" alt="j-one LAB" /></Link>
+					<button type="button" className="logo" onClick={goHomeFnc}><img src="/resources/images/common/logo.png" alt="j-one LAB" /></button>
 					<button type="button" className={"btnGnbMenu"} onClick={gnbOpenFnc}><em className={'blind'}>전체메뉴 열기</em></button>
 				</div>
 			</header>

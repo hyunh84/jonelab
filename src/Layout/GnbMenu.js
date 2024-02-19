@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {GState} from 'Router/GState';
 
 const GnbMenu = ({gnbActive, setGnbActive}) => {
-	const {menu, setSecID, secID} = useContext(GState);
+	const {menu, setSecID} = useContext(GState);
 	const navigate = useNavigate();
 
 	const chPageFn = (e)=> {

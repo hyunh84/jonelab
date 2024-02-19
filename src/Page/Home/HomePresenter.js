@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useLocation } from 'react-router-dom';
 import {GState} from 'Router/GState';
 import IntroSection from "./IntroSection";
 import CompanySection from "./CompanySection";
@@ -10,7 +9,7 @@ import HomBottom from "./HomBottom";
 const HomePresenter = ()=>{
 	const [compEl, setCompEl] = useState({});
 	const [workEl, setWorkEl] = useState({});
-	const {scrollToFn, secID, setSecID} = useContext(GState);
+	const {scrollToFn, secID} = useContext(GState);
 	const [observeEl, setObserveEl] = useState([]);
 	const options = {
 		rootMargin : '10px',
@@ -31,7 +30,7 @@ const HomePresenter = ()=>{
 
 		if(sectId === 'company') {
 			console.log('compEl.current ======= ', compEl.current);
-			offsetT = compEl.current.offsetTop - 68;
+			offsetT = compEl.current.offsetTop - 60;
 		} else if(sectId === 'work') {
 			console.log('workEl.current ======= ', workEl.current);
 			offsetT = workEl.current.offsetTop;

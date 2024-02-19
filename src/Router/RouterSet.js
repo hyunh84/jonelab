@@ -4,24 +4,25 @@ import {
 	Routes,
 	Route,
 	Navigate,
+	useLocation
 } from 'react-router-dom';
-import Header from 'Layout/Header';
+import Layout from 'Layout/Layout';
 import Home from 'Page/Home';
 import Contect from 'Page/Contect';
 
 
 const RouterSet = () => {
-
 	return (
 		<BRouter>
-			<Header />
-			<div id="container">
+			<Layout>
+				
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/contect" element={<Contect />} />
 					<Route path="*" element={<Navigate to="/" replace />}  />
 				</Routes>
-			</div>
+				
+			</Layout>
 		</BRouter>
 	);
 }
