@@ -34,9 +34,6 @@ const GStateProvider = ({ children }) => {
 		scrollToFn,
 	};
 
-	useEffect(() => {
-		document.cookie = 'SameSite=None; Secure';
-	}, []);
 	
 	return <GState.Provider value={value}>{children}</GState.Provider>;
 };
