@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import {useLocation, useNavigate } from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 import {GState} from 'Router/GState';
 import History from 'Router/History';
 import GnbMenu from 'Layout/GnbMenu';
@@ -8,7 +8,6 @@ const Header = () => {
 	const [gnbActive, setGnbActive] = useState(false);
 	const [isBack, setIsBack] = useState(false);
 	const {setMenu, scrollToFn, setSecID, secID} = useContext(GState);
-	const navigate = useNavigate();
 	const {pathname} = useLocation();
 
 	//GNB OPEN BUTTON FUNCTION
